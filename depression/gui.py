@@ -268,9 +268,7 @@ class ClasificadorSaludMentalApp:
             
         if not model_loaded:
             # Simular predicción para demostración
-            import random
-            predicciones = ["Bajo riesgo", "Riesgo moderado", "Alto riesgo"]
-            resultado = random.choice(predicciones)
+            resultado = "Modelo no disponible"
             self.mostrar_resultado(resultado, es_demo=True)
             return
             
