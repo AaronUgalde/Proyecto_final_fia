@@ -29,7 +29,7 @@ class ClasificadorSaludMentalApp:
         
     def configurar_ventana(self):
         """Configurar la ventana principal"""
-        self.root.title("🧠 Clasificador de Salud Mental")
+        self.root.title("🧠 Clasificador de Depresion")
         self.root.geometry("500x700")
         self.root.resizable(True, True)
         
@@ -46,7 +46,7 @@ class ClasificadorSaludMentalApp:
         self.satisfaccion_laboral_var = tk.IntVar(value=2)
         self.sueno_var = tk.StringVar(value=order_sleep[3])
         self.dieta_var = tk.StringVar(value=order_dietary[1])
-        self.nivel_educativo_var = tk.StringVar(value='pregrado')
+        self.nivel_educativo_var = tk.StringVar(value='licenciatura')
         self.suicida_var = tk.StringVar(value='NO')
         self.horas_var = tk.StringVar()
         self.estres_financiero_var = tk.IntVar(value=3)
@@ -81,7 +81,7 @@ class ClasificadorSaludMentalApp:
         
         # Título
         etiqueta_titulo = tk.Label(frame_desplazable, 
-                              text="🧠 Clasificador de Salud Mental",
+                              text="🧠 Clasificador de Depresion",
                               font=('Arial', 16, 'bold'),
                               fg='#2c3e50')
         etiqueta_titulo.pack(pady=(0, 5))
@@ -122,7 +122,7 @@ class ClasificadorSaludMentalApp:
         # Nivel educativo
         tk.Label(frame_academico, text="Nivel educativo:", font=('Arial', 10)).grid(row=0, column=0, sticky='w', pady=5)
         combo_nivel = ttk.Combobox(frame_academico, textvariable=self.nivel_educativo_var,
-                                   values=['pregrado', 'posgrado', 'doctorado', 'secundaria'], 
+                                   values=['licenciatura', 'maestria', 'doctorado', 'secundaria'], 
                                    state='readonly', width=15)
         combo_nivel.grid(row=0, column=1, sticky='w', padx=10, pady=5)
         
@@ -191,7 +191,7 @@ class ClasificadorSaludMentalApp:
         tk.Radiobutton(frame_su, text='No', variable=self.suicida_var, value='NO').pack(side='left', padx=(10, 0))
         
         # Historial familiar
-        tk.Label(frame_salud, text="¿Historial familiar?:", font=('Arial', 10)).grid(row=1, column=0, sticky='w', pady=5)
+        tk.Label(frame_salud, text="¿Historial familiar de enfermedades mentales?:", font=('Arial', 10)).grid(row=1, column=0, sticky='w', pady=5)
         frame_hf = tk.Frame(frame_salud)
         frame_hf.grid(row=1, column=1, sticky='w', padx=10, pady=5)
         tk.Radiobutton(frame_hf, text='Sí', variable=self.historial_familiar_var, value='SÍ').pack(side='left')
@@ -279,7 +279,7 @@ class ClasificadorSaludMentalApp:
             codigo_genero = 1 if self.genero_var.get() == 'Mujer' else 0
             codigo_sueno = order_sleep.index(self.sueno_var.get())
             codigo_dieta = order_dietary.index(self.dieta_var.get())
-            mapa_nivel = {'pregrado': 0, 'posgrado': 1, 'doctorado': 2, 'secundaria': 3}
+            mapa_nivel = {'licenciatura': 0, 'maestria': 1, 'doctorado': 2, 'secundaria': 3}
             codigo_suicida = 1 if self.suicida_var.get() == 'SÍ' else 0
             codigo_historial_familiar = 1 if self.historial_familiar_var.get() == 'SÍ' else 0
 
@@ -345,7 +345,7 @@ class ClasificadorSaludMentalApp:
         self.satisfaccion_laboral_var.set(2)
         self.sueno_var.set(order_sleep[3])
         self.dieta_var.set(order_dietary[1])
-        self.nivel_educativo_var.set('pregrado')
+        self.nivel_educativo_var.set('licenciatura')
         self.suicida_var.set('NO')
         self.horas_var.set('')
         self.estres_financiero_var.set(3)
