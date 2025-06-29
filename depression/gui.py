@@ -202,11 +202,11 @@ class ClasificadorSaludMentalApp:
         frame_botones.pack(fill='x', pady=20)
         
         boton_limpiar = tk.Button(frame_botones, text='🔄 Limpiar', command=self.limpiar_formulario,
-                             bg='#95a5a6', fg='white', font=('Arial', 11, 'bold'))
+                             bg="#0997A1", fg='black', font=('Arial', 11, 'bold'))
         boton_limpiar.pack(side='left', padx=(0, 10))
         
         boton_clasificar = tk.Button(frame_botones, text='🔍 Clasificar', command=self.clasificar,
-                               bg='#2ecc71', fg='white', font=('Arial', 11, 'bold'))
+                               bg='#2ecc71', fg='black', font=('Arial', 11, 'bold'))
         boton_clasificar.pack(side='left')
         
         # Resultado
@@ -299,6 +299,10 @@ class ClasificadorSaludMentalApp:
             
             arr = np.array(caracteristicas).reshape(1, -1)
             pred = model.predict(arr)[0]
+            if(pred == 1):
+                pred = "Posible depresión"
+            else:
+                pred = "Sin depresión"
             self.mostrar_resultado(pred)
             
         except Exception as e:
